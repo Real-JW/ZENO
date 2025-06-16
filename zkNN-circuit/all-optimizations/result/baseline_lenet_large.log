@@ -36,6 +36,6 @@ Conv2D: input 64x5x5, 256 output channels, kernel 4, stride 1, padding 0
 Conv2D output size: 256x2x2
 Running FC1...
 Running FC2...
-Inference completed in: 30.409218ms
+Inference completed in: 330.028311ms
 Predicted class: 3
 Output logits: [135, 150, 128, 156, 133, 155, 98, 138, 123, 143]

@@ -30,6 +30,6 @@ FC Layer - Input size: 64, Weight input size: 64, Output size: 32
 FC3...
 FC Layer - Input size: 32, Weight input size: 32, Output size: 10
 VGG16 inference completed!
-Inference completed in: 56.773347ms
+Inference completed in: 792.054029ms
 Output shape: [batch_size: 1, num_classes: 10]
 Output sample: [inf, inf, inf, inf, inf]

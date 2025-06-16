@@ -24,9 +24,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.96291ms
+Total inference time: 31.740882ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 1 completed in: 2.464942ms
+Run 1 completed in: 36.889204ms
 
 === Inference Run 2 ===
 Starting Conv1...
@@ -45,9 +45,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.939226ms
+Total inference time: 31.526663ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 2 completed in: 2.273029ms
+Run 2 completed in: 35.917847ms
 
 === Inference Run 3 ===
 Starting Conv1...
@@ -66,9 +66,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.928856ms
+Total inference time: 31.534904ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 3 completed in: 2.272037ms
+Run 3 completed in: 35.939513ms
 
 === Inference Run 4 ===
 Starting Conv1...
@@ -87,9 +87,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.930059ms
+Total inference time: 31.516885ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 4 completed in: 2.263059ms
+Run 4 completed in: 35.896477ms
 
 === Inference Run 5 ===
 Starting Conv1...
@@ -108,9 +108,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.927333ms
+Total inference time: 31.68479ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 5 completed in: 2.265604ms
+Run 5 completed in: 36.086012ms
 
 === Inference Run 6 ===
 Starting Conv1...
@@ -129,9 +129,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.92058ms
+Total inference time: 31.790734ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 6 completed in: 2.262277ms
+Run 6 completed in: 36.285953ms
 
 === Inference Run 7 ===
 Starting Conv1...
@@ -150,9 +150,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.92569ms
+Total inference time: 32.031175ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 7 completed in: 2.271064ms
+Run 7 completed in: 36.654577ms
 
 === Inference Run 8 ===
 Starting Conv1...
@@ -171,9 +171,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.929237ms
+Total inference time: 31.584792ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 8 completed in: 2.26867ms
+Run 8 completed in: 36.058531ms
 
 === Inference Run 9 ===
 Starting Conv1...
@@ -192,9 +192,9 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.922975ms
+Total inference time: 31.666217ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 9 completed in: 2.261216ms
+Run 9 completed in: 36.199084ms
 
 === Inference Run 10 ===
 Starting Conv1...
@@ -213,10 +213,10 @@ Starting FC1...
 FC1 completed: 84
 Starting FC2...
 FC2 completed: 10
-Total inference time: 1.928675ms
+Total inference time: 31.615847ms
 Output logits: [123, 152, 142, 134, 120, 145, 157, 132, 86, 110]
-Run 10 completed in: 2.270183ms
+Run 10 completed in: 36.120696ms
 
 === Latency Statistics ===
-Average inference time: 2.287208ms
-Total time for 10 runs: 22.872081ms
+Average inference time: 36.204789ms
+Total time for 10 runs: 362.047894ms
