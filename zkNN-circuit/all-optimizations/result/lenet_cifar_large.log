@@ -1,0 +1,70 @@
+LeNet optimized medium on CIFAR dataset
+finish reading parameters
+lenet vallina forward
+commit time 23.623364ms
+start generating random parameters
+Number of constraints for x commitment 125682
+lenet vallina forward
+Number of constraints for z commitment 39946 accumulated constraints 165628
+Number of constraints for Conv1 3584 accumulated constraints 169212
+Number of constraints for Relu1 75264 accumulated constraints 244476
+Number of constraints for AvgPool1 896 accumulated constraints 245372
+Number of constraints for Conv2 1280 accumulated constraints 246652
+Number of constraints for Relu2 19200 accumulated constraints 265852
+Number of constraints for AvgPool2 320 accumulated constraints 266172
+Number of constraints for Conv3 512 accumulated constraints 266684
+Number of constraints for Relu3 3072 accumulated constraints 269756
+Number of constraints FC1 16 accumulated constraints 269772
+Number of constraints for Relu4 384 accumulated constraints 270156
+Number of constraints FC2 2 accumulated constraints 270158
+Number of constraints for ArgmaxCircuitU8 Circuit 18950, Accumulated constraints 289108
+generate_time:11.294307225s
+start inline lcs
+lc_map len:18096050
+prepare_time:17.070853ms
+thread:7 finished, inner_prepare_time:110.036323ms,compute_time:701.870883ms,push_time:80ns
+thread:3 finished, inner_prepare_time:108.581144ms,compute_time:720.616821ms,push_time:80ns
+thread:5 finished, inner_prepare_time:109.962543ms,compute_time:719.236695ms,push_time:80ns
+thread:4 finished, inner_prepare_time:109.05873ms,compute_time:748.756417ms,push_time:80ns
+thread:0 finished, inner_prepare_time:107.590587ms,compute_time:750.427154ms,push_time:80ns
+thread:2 finished, inner_prepare_time:109.701388ms,compute_time:748.348414ms,push_time:80ns
+thread:1 finished, inner_prepare_time:109.787602ms,compute_time:748.284722ms,push_time:101ns
+thread:6 finished, inner_prepare_time:110.327485ms,compute_time:749.212081ms,push_time:80ns
+prepare time:17.070853ms, parallel compute:926.155344ms, insert time:20ns, map_len18096050
+total_time:943.261774ms
+allocate a,b and c
+Setup: total time:24.344062048s,generate time:11.294307225s,circuit computation time:943.308192ms,security computation time:12.106422977s
+setup time 28.49820971s
+random parameters generated!
+
+Number of constraints for x commitment 125682
+lenet vallina forward
+Number of constraints for z commitment 39946 accumulated constraints 165628
+Number of constraints for Conv1 3584 accumulated constraints 169212
+Number of constraints for Relu1 75264 accumulated constraints 244476
+Number of constraints for AvgPool1 896 accumulated constraints 245372
+Number of constraints for Conv2 1280 accumulated constraints 246652
+Number of constraints for Relu2 19200 accumulated constraints 265852
+Number of constraints for AvgPool2 320 accumulated constraints 266172
+Number of constraints for Conv3 512 accumulated constraints 266684
+Number of constraints for Relu3 3072 accumulated constraints 269756
+Number of constraints FC1 16 accumulated constraints 269772
+Number of constraints for Relu4 384 accumulated constraints 270156
+Number of constraints FC2 2 accumulated constraints 270158
+Number of constraints for ArgmaxCircuitU8 Circuit 18950, Accumulated constraints 289108
+lc_map len:18096050
+prepare_time:16.094913ms
+thread:2 finished, inner_prepare_time:108.425339ms,compute_time:690.399596ms,push_time:60ns
+thread:7 finished, inner_prepare_time:107.632846ms,compute_time:693.707217ms,push_time:70ns
+thread:1 finished, inner_prepare_time:107.828708ms,compute_time:721.475879ms,push_time:80ns
+thread:4 finished, inner_prepare_time:107.295687ms,compute_time:750.895703ms,push_time:80ns
+thread:6 finished, inner_prepare_time:108.267239ms,compute_time:751.450875ms,push_time:80ns
+thread:0 finished, inner_prepare_time:108.062912ms,compute_time:775.945781ms,push_time:91ns
+thread:3 finished, inner_prepare_time:105.864774ms,compute_time:779.863149ms,push_time:80ns
+thread:5 finished, inner_prepare_time:108.731118ms,compute_time:804.494233ms,push_time:80ns
+prepare time:16.094913ms, parallel compute:928.993053ms, insert time:20ns, map_len18096050
+total_time:945.123043ms
+start generate witness_map
+Prove: total time:23.177741487s,generate time:11.308221043s,circuit computation time:945.183487ms,security computation time:10.924331467s
+prove time 24.795135906s
+verification time 2.901971ms

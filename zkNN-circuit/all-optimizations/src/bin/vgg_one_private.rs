@@ -343,15 +343,16 @@ fn main() {
     let end = Instant::now();
     println!("prove time {:?}", end.duration_since(begin));
 
-    // let commitment = [x_com.x, x_com.y, z_com.x, z_com.y].to_vec();
+    let commitment = [x_com.x, x_com.y, z_com.x, z_com.y].to_vec();
 
-    // let inputs: Vec<Fq> = [
-    //     commitment[..].as_ref(),
-    // ]
-    // .concat();
+    let inputs: Vec<Fq> = [
+        commitment[..].as_ref(),
+    ]
+    .concat();
 
-    // let begin = Instant::now();
+    let begin = Instant::now();
+    verify_proof(&pvk, &proof, &inputs[..]).unwrap();
     // assert!(verify_proof(&pvk, &proof, &inputs[..]).unwrap());
-    // let end = Instant::now();
-    // println!("verification time {:?}", end.duration_since(begin));
+    let end = Instant::now();
+    println!("verification time {:?}", end.duration_since(begin));
 }

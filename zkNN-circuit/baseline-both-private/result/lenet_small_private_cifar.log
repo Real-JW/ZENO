@@ -1,0 +1,72 @@
+LeNet optimized small on CIFAR dataset
+finish reading parameters
+lenet vallina forward
+finish forwarding
+commit time 141.700013ms
+start generating random parameters
+Number of constraints for x commitment 125682
+lenet vallina forward
+z within circuit [123, 123, 137, 149, 131, 144, 135, 123, 131, 120]
+Number of constraints for z commitment 39946 accumulated constraints 165628
+Number of constraints for conv1 layer commitment 52266 accumulated constraints 217894
+Number of constraints for conv2 layer commitment 159132 accumulated constraints 324760
+Number of constraints for conv3 layer commitment 1415952 accumulated constraints 1581580
+Number of constraints for fc1 layer commitment 3060570 accumulated constraints 3226198
+Number of constraints for fc2 layer commitment 63186 accumulated constraints 3289384
+we don't use old SIMD
+Number of constraints for Conv1 420690 accumulated constraints 3646888
+Number of constraints for Relu1 14112 accumulated constraints 3661000
+Number of constraints for AvgPool1 1176 accumulated constraints 3662176
+we don't use old SIMD
+Number of constraints for Conv2 241600 accumulated constraints 3903776
+Number of constraints for Relu2 4800 accumulated constraints 3908576
+Number of constraints for AvgPool2 400 accumulated constraints 3908976
+OLD SIMD conv among multiple kernel channels because now input is too small.
+Number of constraints for Conv3 107040 accumulated constraints 4016016
+Number of constraints for Relu3 1440 accumulated constraints 4017456
+Use 4 vector SIMD in current FC layer
+Number of constraints FC1 23436 accumulated constraints 4040892
+Number of constraints for Relu4 252 accumulated constraints 4041144
+Use 4 vector SIMD in current FC layer
+Number of constraints FC2 1610 accumulated constraints 4042754
+Number of constraints for ArgmaxCircuitU8 Circuit 18950, Accumulated constraints 4061704
+generate_time:23.562347858s
+start inline lcs
+total inline time:5.20264702s
+allocate a,b and c
+Setup: total time:49.626414003s,generate time:23.562347858s,circuit computation time:6.263700808s,security computation time:19.800349578s
+setup time 50.932983313s
+crs size: 1201629264
+random parameters generated!
+
+Number of constraints for x commitment 125682
+lenet vallina forward
+z within circuit [123, 123, 137, 149, 131, 144, 135, 123, 131, 120]
+Number of constraints for z commitment 39946 accumulated constraints 165628
+Number of constraints for conv1 layer commitment 52266 accumulated constraints 217894
+Number of constraints for conv2 layer commitment 159132 accumulated constraints 324760
+Number of constraints for conv3 layer commitment 1415952 accumulated constraints 1581580
+Number of constraints for fc1 layer commitment 3060570 accumulated constraints 3226198
+Number of constraints for fc2 layer commitment 63186 accumulated constraints 3289384
+we don't use old SIMD
+Number of constraints for Conv1 420690 accumulated constraints 3646888
+Number of constraints for Relu1 14112 accumulated constraints 3661000
+Number of constraints for AvgPool1 1176 accumulated constraints 3662176
+we don't use old SIMD
+Number of constraints for Conv2 241600 accumulated constraints 3903776
+Number of constraints for Relu2 4800 accumulated constraints 3908576
+Number of constraints for AvgPool2 400 accumulated constraints 3908976
+OLD SIMD conv among multiple kernel channels because now input is too small.
+Number of constraints for Conv3 107040 accumulated constraints 4016016
+Number of constraints for Relu3 1440 accumulated constraints 4017456
+Use 4 vector SIMD in current FC layer
+Number of constraints FC1 23436 accumulated constraints 4040892
+Number of constraints for Relu4 252 accumulated constraints 4041144
+Use 4 vector SIMD in current FC layer
+Number of constraints FC2 1610 accumulated constraints 4042754
+Number of constraints for ArgmaxCircuitU8 Circuit 18950, Accumulated constraints 4061704
+total inline time:4.756456545s
+start generate witness_map
+Prove: total time:57.68660429s,generate time:25.655356139s,circuit computation time:5.942298742s,security computation time:26.088943627s
+prove time 58.306445466s
+verification time 13.518322ms

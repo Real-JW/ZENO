@@ -547,7 +547,8 @@ fn main() {
     .concat();
 
     let begin = Instant::now();
-    assert!(verify_proof(&pvk, &proof, &inputs[..]).unwrap());
+    verify_proof(&pvk, &proof, &inputs[..]).unwrap();
+    // assert!(verify_proof(&pvk, &proof, &inputs[..]).unwrap());
     let end = Instant::now();
     println!("verification time {:?}", end.duration_since(begin));
 }

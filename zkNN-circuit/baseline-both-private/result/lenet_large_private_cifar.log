@@ -1,0 +1,71 @@
+LeNet optimized medium on CIFAR dataset
+finish reading parameters
+lenet vallina forward
+commit time 585.197004ms
+start generating random parameters
+Number of constraints for x commitment 125682
+lenet vallina forward
+z within circuit [126, 126, 132, 153, 140, 140, 117, 125, 135, 114]
+Number of constraints for z commitment 39946 accumulated constraints 165628
+Number of constraints for conv1 layer commitment 106866 accumulated constraints 272494
+Number of constraints for conv2 layer commitment 2176388 accumulated constraints 2342016
+Number of constraints for conv3 layer commitment 12769032 accumulated constraints 12934660
+Number of constraints for fc1 layer commitment 18065354 accumulated constraints 18230982
+Number of constraints for fc2 layer commitment 75506 accumulated constraints 18306488
+we don't use old SIMD
+Number of constraints for Conv1 1982194 accumulated constraints 20213176
+Number of constraints for Relu1 75264 accumulated constraints 20288440
+Number of constraints for AvgPool1 6272 accumulated constraints 20294712
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv2 2863360 accumulated constraints 23158072
+Number of constraints for Relu2 19200 accumulated constraints 23177272
+Number of constraints for AvgPool2 1600 accumulated constraints 23178872
+OLD SIMD conv among multiple kernel channels because now input is too small.
+Number of constraints for Conv3 424960 accumulated constraints 23603832
+Number of constraints for Relu3 3072 accumulated constraints 23606904
+Use 4 vector SIMD in current FC layer
+Number of constraints FC1 53120 accumulated constraints 23660024
+Number of constraints for Relu4 384 accumulated constraints 23660408
+Use 4 vector SIMD in current FC layer
+Number of constraints FC2 1786 accumulated constraints 23662194
+Number of constraints for ArgmaxCircuitU8 Circuit 18950, Accumulated constraints 23681144
+generate_time:131.512675829s
+start inline lcs
+total inline time:34.298466894s
+allocate a,b and c
+Setup: total time:281.151826786s,generate time:131.512675829s,circuit computation time:40.243239966s,security computation time:109.395886735s
+setup time 288.95425079s
+crs size: 7409587728
+random parameters generated!
+
+Number of constraints for x commitment 125682
+lenet vallina forward
+z within circuit [126, 126, 132, 153, 140, 140, 117, 125, 135, 114]
+Number of constraints for z commitment 39946 accumulated constraints 165628
+Number of constraints for conv1 layer commitment 106866 accumulated constraints 272494
+Number of constraints for conv2 layer commitment 2176388 accumulated constraints 2342016
+Number of constraints for conv3 layer commitment 12769032 accumulated constraints 12934660
+Number of constraints for fc1 layer commitment 18065354 accumulated constraints 18230982
+Number of constraints for fc2 layer commitment 75506 accumulated constraints 18306488
+we don't use old SIMD
+Number of constraints for Conv1 1982194 accumulated constraints 20213176
+Number of constraints for Relu1 75264 accumulated constraints 20288440
+Number of constraints for AvgPool1 6272 accumulated constraints 20294712
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv2 2863360 accumulated constraints 23158072
+Number of constraints for Relu2 19200 accumulated constraints 23177272
+Number of constraints for AvgPool2 1600 accumulated constraints 23178872
+OLD SIMD conv among multiple kernel channels because now input is too small.
+Number of constraints for Conv3 424960 accumulated constraints 23603832
+Number of constraints for Relu3 3072 accumulated constraints 23606904
+Use 4 vector SIMD in current FC layer
+Number of constraints FC1 53120 accumulated constraints 23660024
+Number of constraints for Relu4 384 accumulated constraints 23660408
+Use 4 vector SIMD in current FC layer
+Number of constraints FC2 1786 accumulated constraints 23662194
+Number of constraints for ArgmaxCircuitU8 Circuit 18950, Accumulated constraints 23681144
+total inline time:32.6538078s
+start generate witness_map
+Prove: total time:358.244784966s,generate time:143.532188396s,circuit computation time:39.37349021s,security computation time:175.339100388s
+prove time 361.620813803s
+verification time 59.714411ms

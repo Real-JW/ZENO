@@ -1,0 +1,186 @@
+VGG16 testing. use null parameters and input just to benchmark performance
+finish reading parameters
+vgg vallina forward1
+vgg vallina forward conv11 and 12 finished
+size:[1,16,16,16]
+size:[1,32,8,8]
+vgg vallina forward conv21 and 22 finished
+vgg vallina forward conv31 and 32 33 finished
+size:[1,64,4,4]
+vgg vallina forward conv41  finished
+vgg vallina forward conv42  finished
+vgg vallina forward conv41 and 42 43 finished
+size:[1,128,2,2]
+size:[1,128,1,1]
+vgg vallina forward conv51 and 52 53 finished
+vgg vallina forward fc1 finished
+vgg vallina forward fc2 finished
+vgg vallina forward fc3 finished
+finish forwarding
+z outside [31, 31, 31, 31, 31, 31, 31, 31, 31, 31]
+commit time 266.982978ms
+start generating random parameters
+Number of constraints for x commitment 125682
+vgg vallina forward1
+vgg vallina forward conv11 and 12 finished
+size:[1,16,16,16]
+size:[1,32,8,8]
+vgg vallina forward conv21 and 22 finished
+vgg vallina forward conv31 and 32 33 finished
+size:[1,64,4,4]
+vgg vallina forward conv41  finished
+vgg vallina forward conv42  finished
+vgg vallina forward conv41 and 42 43 finished
+size:[1,128,2,2]
+size:[1,128,1,1]
+vgg vallina forward conv51 and 52 53 finished
+vgg vallina forward fc1 finished
+vgg vallina forward fc2 finished
+vgg vallina forward fc3 finished
+Number of constraints for z commitment 39946 accumulated constraints 165628
+Number of constraints for conv21 layer commitment 51762 accumulated constraints 217390
+Number of constraints for conv21 layer commitment 155940 accumulated constraints 321568
+Number of constraints for conv21 layer commitment 364296 accumulated constraints 529924
+Number of constraints for conv22 layer commitment 741342 accumulated constraints 906970
+Number of constraints for conv31 layer commitment 1495434 accumulated constraints 1661062
+Number of constraints for conv32 layer commitment 3003618 accumulated constraints 3169246
+Number of constraints for conv33 layer commitment 3197638 accumulated constraints 3363266
+Number of constraints for conv41 layer commitment 6214006 accumulated constraints 6379634
+Number of constraints for conv42 layer commitment 12207076 accumulated constraints 12372704
+Number of constraints for conv43 layer commitment 12903824 accumulated constraints 13069452
+Number of constraints for conv51 layer commitment 18896894 accumulated constraints 19062522
+Number of constraints for conv52 layer commitment 24889964 accumulated constraints 25055592
+Number of constraints for conv53 layer commitment 25586712 accumulated constraints 25752340
+Number of constraints for conv21 layer commitment 25935086 accumulated constraints 26100714
+Number of constraints for conv21 layer commitment 26032096 accumulated constraints 26197724
+Number of constraints for conv21 layer commitment 26080722 accumulated constraints 26246350
+we don't use old SIMD
+we don't use old SIMD
+Number of constraints for Conv12 28915154 accumulated constraints 29080782
+we don't use old SIMD
+Number of constraints for Conv21 1187840 accumulated constraints 30268622
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv22 1892352 accumulated constraints 32160974
+Number of constraints for AvgPool2 0 accumulated constraints 32160974
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv31 946176 accumulated constraints 33107150
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv32 1241088 accumulated constraints 34348238
+we don't use old SIMD
+Number of constraints for Conv33 266240 accumulated constraints 34614478
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv41 620544 accumulated constraints 35235022
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv42 915456 accumulated constraints 36150478
+we don't use old SIMD
+OLD SIMD conv among multiple kernel channels because now input is too small.
+OLD SIMD conv among multiple kernel channels because now input is too small.
+we don't use old SIMD
+Number of constraints for Conv42 787968 accumulated constraints 36938446
+avg
+size:[1,128,1,1]
+Use 4 vector SIMD in current FC layer
+Number of constraints FC1 12224 accumulated constraints 36950670
+Use 4 vector SIMD in current FC layer
+Number of constraints FC2 5600 accumulated constraints 36956270
+Use 4 vector SIMD in current FC layer
+Number of constraints FC3 1402 accumulated constraints 36957672
+generate_time:207.276453539s
+start inline lcs
+lc_map len:188871802
+prepare_time:889.155965ms
+thread:7 finished, inner_prepare_time:1.996166337s,compute_time:9.536913734s,push_time:71ns
+thread:0 finished, inner_prepare_time:1.949328295s,compute_time:10.07408632s,push_time:60ns
+thread:4 finished, inner_prepare_time:1.981977426s,compute_time:10.059801156s,push_time:80ns
+thread:6 finished, inner_prepare_time:2.003879801s,compute_time:10.127691372s,push_time:61ns
+thread:1 finished, inner_prepare_time:1.951582549s,compute_time:11.911030923s,push_time:60ns
+thread:5 finished, inner_prepare_time:1.989410458s,compute_time:11.915906687s,push_time:60ns
+thread:2 finished, inner_prepare_time:1.963293873s,compute_time:12.450023659s,push_time:61ns
+thread:3 finished, inner_prepare_time:1.974810648s,compute_time:12.451723763s,push_time:60ns
+prepare time:889.155965ms, parallel compute:20.385445598s, insert time:20ns, map_len188871802
+total_time:21.274647389s
+allocate a,b and c
+Setup: total time:417.893806808s,generate time:207.276453539s,circuit computation time:21.288821173s,security computation time:189.328495526s
+setup time 458.560623612s
+random parameters generated!
+
+Number of constraints for x commitment 125682
+vgg vallina forward1
+vgg vallina forward conv11 and 12 finished
+size:[1,16,16,16]
+size:[1,32,8,8]
+vgg vallina forward conv21 and 22 finished
+vgg vallina forward conv31 and 32 33 finished
+size:[1,64,4,4]
+vgg vallina forward conv41  finished
+vgg vallina forward conv42  finished
+vgg vallina forward conv41 and 42 43 finished
+size:[1,128,2,2]
+size:[1,128,1,1]
+vgg vallina forward conv51 and 52 53 finished
+vgg vallina forward fc1 finished
+vgg vallina forward fc2 finished
+vgg vallina forward fc3 finished
+Number of constraints for z commitment 39946 accumulated constraints 165628
+Number of constraints for conv21 layer commitment 51762 accumulated constraints 217390
+Number of constraints for conv21 layer commitment 155940 accumulated constraints 321568
+Number of constraints for conv21 layer commitment 364296 accumulated constraints 529924
+Number of constraints for conv22 layer commitment 741342 accumulated constraints 906970
+Number of constraints for conv31 layer commitment 1495434 accumulated constraints 1661062
+Number of constraints for conv32 layer commitment 3003618 accumulated constraints 3169246
+Number of constraints for conv33 layer commitment 3197638 accumulated constraints 3363266
+Number of constraints for conv41 layer commitment 6214006 accumulated constraints 6379634
+Number of constraints for conv42 layer commitment 12207076 accumulated constraints 12372704
+Number of constraints for conv43 layer commitment 12903824 accumulated constraints 13069452
+Number of constraints for conv51 layer commitment 18896894 accumulated constraints 19062522
+Number of constraints for conv52 layer commitment 24889964 accumulated constraints 25055592
+Number of constraints for conv53 layer commitment 25586712 accumulated constraints 25752340
+Number of constraints for conv21 layer commitment 25935086 accumulated constraints 26100714
+Number of constraints for conv21 layer commitment 26032096 accumulated constraints 26197724
+Number of constraints for conv21 layer commitment 26080722 accumulated constraints 26246350
+we don't use old SIMD
+we don't use old SIMD
+Number of constraints for Conv12 28915154 accumulated constraints 29080782
+we don't use old SIMD
+Number of constraints for Conv21 1187840 accumulated constraints 30268622
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv22 1892352 accumulated constraints 32160974
+Number of constraints for AvgPool2 0 accumulated constraints 32160974
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv31 946176 accumulated constraints 33107150
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv32 1241088 accumulated constraints 34348238
+we don't use old SIMD
+Number of constraints for Conv33 266240 accumulated constraints 34614478
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv41 620544 accumulated constraints 35235022
+OLD SIMD conv among multiple kernel positions on image
+Number of constraints for Conv42 915456 accumulated constraints 36150478
+we don't use old SIMD
+OLD SIMD conv among multiple kernel channels because now input is too small.
+OLD SIMD conv among multiple kernel channels because now input is too small.
+we don't use old SIMD
+Number of constraints for Conv42 787968 accumulated constraints 36938446
+avg
+size:[1,128,1,1]
+Use 4 vector SIMD in current FC layer
+Number of constraints FC1 12224 accumulated constraints 36950670
+Use 4 vector SIMD in current FC layer
+Number of constraints FC2 5600 accumulated constraints 36956270
+Use 4 vector SIMD in current FC layer
+Number of constraints FC3 1402 accumulated constraints 36957672
+lc_map len:188871802
+prepare_time:979.132037ms
+thread:2 finished, inner_prepare_time:1.951518171s,compute_time:9.196803074s,push_time:90ns
+thread:4 finished, inner_prepare_time:1.979421092s,compute_time:9.214822901s,push_time:70ns
+thread:7 finished, inner_prepare_time:2.004873876s,compute_time:9.444654784s,push_time:70ns
+thread:0 finished, inner_prepare_time:1.940443707s,compute_time:9.801300013s,push_time:60ns
+thread:5 finished, inner_prepare_time:1.989552427s,compute_time:9.769178802s,push_time:60ns
+thread:3 finished, inner_prepare_time:1.971240226s,compute_time:9.915583304s,push_time:61ns
+thread:6 finished, inner_prepare_time:1.997441159s,compute_time:9.916785234s,push_time:70ns
+thread:1 finished, inner_prepare_time:1.9629328s,compute_time:10.147984019s,push_time:71ns
+prepare time:979.132037ms, parallel compute:21.516353221s, insert time:20ns, map_len188871802
+total_time:22.495528942s
+start generate witness_map
+Prove: total time:530.078340299s,generate time:220.272342413s,circuit computation time:22.505784643s,security computation time:287.300192674s
+prove time 563.931495829s

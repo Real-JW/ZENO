@@ -1,0 +1,73 @@
+RESNET18 testing. use null parameters and input just to benchmark performance
+finish reading parameters
+before forward
+resnet18 vallina forward
+finish forwarding
+finish pedersen
+commit time 19.75693ms
+start generating random parameters
+Number of constraints for x commitment 125682
+Number of constraints for res_block1 8192 accumulated constraints 133874
+Number of constraints for res_block2 6144 accumulated constraints 140018
+Number of constraints for AvgPool2 512 accumulated constraints 140530
+Number of constraints for res_block3 4096 accumulated constraints 144626
+Number of constraints for res_block4 3072 accumulated constraints 147698
+Number of constraints for AvgPool3 256 accumulated constraints 147954
+Number of constraints for res_block5 2048 accumulated constraints 150002
+Number of constraints for res_block6 1536 accumulated constraints 151538
+Number of constraints for AvgPool4 256 accumulated constraints 151794
+Number of constraints for res_block7 2048 accumulated constraints 153842
+Number of constraints for res_block8 1536 accumulated constraints 155378
+Number of constraints for AvgPool5 128 accumulated constraints 155506
+Number of constraints FC1 2 accumulated constraints 155508
+Number of constraints for z commitment 39946 accumulated constraints 195454
+generate_time:45.560797929s
+start inline lcs
+lc_map len:69903744
+prepare_time:56.078179ms
+thread:5 finished, inner_prepare_time:404.293582ms,compute_time:2.530720788s,push_time:70ns
+thread:0 finished, inner_prepare_time:412.711129ms,compute_time:2.53001499s,push_time:70ns
+thread:1 finished, inner_prepare_time:418.306166ms,compute_time:2.525592055s,push_time:60ns
+thread:4 finished, inner_prepare_time:419.334856ms,compute_time:2.528397995s,push_time:60ns
+thread:7 finished, inner_prepare_time:416.113059ms,compute_time:2.531648747s,push_time:70ns
+thread:2 finished, inner_prepare_time:418.729308ms,compute_time:2.612201704s,push_time:60ns
+thread:6 finished, inner_prepare_time:420.256734ms,compute_time:2.644957871s,push_time:70ns
+thread:3 finished, inner_prepare_time:406.540542ms,compute_time:2.705993387s,push_time:60ns
+prepare time:56.078179ms, parallel compute:3.120336531s, insert time:20ns, map_len69903744
+total_time:3.176444166s
+allocate a,b and c
+Setup: total time:76.14655476s,generate time:45.560797929s,circuit computation time:3.176490073s,security computation time:27.409233776s
+setup time 94.250315913s
+crs size: 16220443584
+random parameters generated!
+
+Number of constraints for x commitment 125682
+Number of constraints for res_block1 8192 accumulated constraints 133874
+Number of constraints for res_block2 6144 accumulated constraints 140018
+Number of constraints for AvgPool2 512 accumulated constraints 140530
+Number of constraints for res_block3 4096 accumulated constraints 144626
+Number of constraints for res_block4 3072 accumulated constraints 147698
+Number of constraints for AvgPool3 256 accumulated constraints 147954
+Number of constraints for res_block5 2048 accumulated constraints 150002
+Number of constraints for res_block6 1536 accumulated constraints 151538
+Number of constraints for AvgPool4 256 accumulated constraints 151794
+Number of constraints for res_block7 2048 accumulated constraints 153842
+Number of constraints for res_block8 1536 accumulated constraints 155378
+Number of constraints for AvgPool5 128 accumulated constraints 155506
+Number of constraints FC1 2 accumulated constraints 155508
+Number of constraints for z commitment 39946 accumulated constraints 195454
+lc_map len:69903744
+prepare_time:57.367253ms
+thread:4 finished, inner_prepare_time:438.688586ms,compute_time:2.138385696s,push_time:70ns
+thread:3 finished, inner_prepare_time:437.677139ms,compute_time:2.18790988s,push_time:70ns
+thread:0 finished, inner_prepare_time:440.941968ms,compute_time:2.192259005s,push_time:70ns
+thread:6 finished, inner_prepare_time:432.664086ms,compute_time:2.205741664s,push_time:80ns
+thread:2 finished, inner_prepare_time:444.02368ms,compute_time:2.202987864s,push_time:81ns
+thread:5 finished, inner_prepare_time:426.649694ms,compute_time:2.24915815s,push_time:81ns
+thread:1 finished, inner_prepare_time:432.633578ms,compute_time:2.269228528s,push_time:81ns
+thread:7 finished, inner_prepare_time:447.776965ms,compute_time:2.295621693s,push_time:71ns
+prepare time:57.367253ms, parallel compute:2.749656462s, insert time:30ns, map_len69903744
+total_time:2.80705856s
+start generate witness_map
+Prove: total time:62.501621923s,generate time:44.079963438s,circuit computation time:2.807112523s,security computation time:15.614538729s
+prove time 68.874543599s
