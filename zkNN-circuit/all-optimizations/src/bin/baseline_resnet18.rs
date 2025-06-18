@@ -30,6 +30,19 @@ fn conv2d_u8(
     vec![vec![vec![vec![output_zero_point; output_width]; output_height]; out_channels]; batch_size]
 }
 
+// Add initial 7x7 conv and maxpool
+fn conv2d_7x7_u8(
+    input: &Vec<Vec<Vec<Vec<u8>>>>,
+    kernel: &Vec<Vec<Vec<Vec<u8>>>>,
+    stride: usize,
+    padding: usize,
+    output_zero_point: u8,
+    multiplier: &Vec<f32>,
+) -> Vec<Vec<Vec<Vec<u8>>>> {
+    // Placeholder for 7x7 conv, use conv2d_u8 for now
+    conv2d_u8(input, kernel, stride, padding, output_zero_point, multiplier)
+}
+
 // ReLU activation for u8 tensors
 fn relu_u8(input: &Vec<Vec<Vec<Vec<u8>>>>, zero_point: u8) -> Vec<Vec<Vec<Vec<u8>>>> {
     input.iter()
@@ -239,154 +252,56 @@ fn resnet_basic_block(
 
 // Main ResNet-18 forward function
 pub fn resnet18_circuit_forward_u8(
-    padding: usize,
     x: Vec<Vec<Vec<Vec<u8>>>>,
-    
-    // Layer 2 weights
-    conv21_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv22_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv23_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv24_w: Vec<Vec<Vec<Vec<u8>>>>,
-    
-    // Layer 3 weights
-    conv31_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv32_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv33_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv34_w: Vec<Vec<Vec<Vec<u8>>>>,
-    
-    // Layer 4 weights
-    conv41_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv42_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv43_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv44_w: Vec<Vec<Vec<Vec<u8>>>>,
-    
-    // Layer 5 weights
-    conv51_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv52_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv53_w: Vec<Vec<Vec<Vec<u8>>>>,
-    conv54_w: Vec<Vec<Vec<Vec<u8>>>>,
-    
-    // Residual connection weights
-    conv_residual1_weight: Vec<Vec<Vec<Vec<u8>>>>,
-    conv_residual3_weight: Vec<Vec<Vec<Vec<u8>>>>,
-    conv_residual5_weight: Vec<Vec<Vec<Vec<u8>>>>,
-    conv_residual7_weight: Vec<Vec<Vec<Vec<u8>>>>,
-    
+    // Initial conv weights
+    conv1_w: Vec<Vec<Vec<Vec<u8>>>>,
+    // Stage 1
+    conv2_1_w: Vec<Vec<Vec<Vec<u8>>>>, conv2_2_w: Vec<Vec<Vec<Vec<u8>>>>,
+    // Stage 2
+    conv3_1_w: Vec<Vec<Vec<Vec<u8>>>>, conv3_2_w: Vec<Vec<Vec<Vec<u8>>>>,
+    // Stage 3
+    conv4_1_w: Vec<Vec<Vec<Vec<u8>>>>, conv4_2_w: Vec<Vec<Vec<Vec<u8>>>>,
+    // Stage 4
+    conv5_1_w: Vec<Vec<Vec<Vec<u8>>>>, conv5_2_w: Vec<Vec<Vec<Vec<u8>>>>,
     // FC weights
-    fc1_w: Vec<Vec<u8>>,
-    
-    // Zero points
-    x_0: u8,
-    conv21_output_0: u8, conv22_output_0: u8, conv23_output_0: u8, conv24_output_0: u8,
-    conv31_output_0: u8, conv32_output_0: u8, conv33_output_0: u8, conv34_output_0: u8,
-    conv41_output_0: u8, conv42_output_0: u8, conv43_output_0: u8, conv44_output_0: u8,
-    conv51_output_0: u8, conv52_output_0: u8, conv53_output_0: u8, conv54_output_0: u8,
-    conv_residual1_output_0: u8, conv_residual3_output_0: u8, 
-    conv_residual5_output_0: u8, conv_residual7_output_0: u8,
-    fc1_output_0: u8,
-    
-    // Weight zero points
-    conv21_weights_0: u8, conv22_weights_0: u8, conv23_weights_0: u8, conv24_weights_0: u8,
-    conv31_weights_0: u8, conv32_weights_0: u8, conv33_weights_0: u8, conv34_weights_0: u8,
-    conv41_weights_0: u8, conv42_weights_0: u8, conv43_weights_0: u8, conv44_weights_0: u8,
-    conv51_weights_0: u8, conv52_weights_0: u8, conv53_weights_0: u8, conv54_weights_0: u8,
-    conv_residual1_weights_0: u8, conv_residual3_weights_0: u8,
-    conv_residual5_weights_0: u8, conv_residual7_weights_0: u8,
-    fc1_weights_0: u8,
-    
-    // Multipliers
-    multiplier_conv21: Vec<f32>, multiplier_conv22: Vec<f32>, multiplier_conv23: Vec<f32>, multiplier_conv24: Vec<f32>,
-    multiplier_conv31: Vec<f32>, multiplier_conv32: Vec<f32>, multiplier_conv33: Vec<f32>, multiplier_conv34: Vec<f32>,
-    multiplier_conv41: Vec<f32>, multiplier_conv42: Vec<f32>, multiplier_conv43: Vec<f32>, multiplier_conv44: Vec<f32>,
-    multiplier_conv51: Vec<f32>, multiplier_conv52: Vec<f32>, multiplier_conv53: Vec<f32>, multiplier_conv54: Vec<f32>,
-    conv_residual1_multiplier: Vec<f32>, conv_residual3_multiplier: Vec<f32>,
-    conv_residual5_multiplier: Vec<f32>, conv_residual7_multiplier: Vec<f32>,
-    
-    // Residual add parameters
-    add_residual1_output_0: u8, add_residual2_output_0: u8, add_residual3_output_0: u8, add_residual4_output_0: u8,
-    add_residual5_output_0: u8, add_residual6_output_0: u8, add_residual7_output_0: u8, add_residual8_output_0: u8,
-    
-    add_residual1_first_multiplier: Vec<f32>, add_residual2_first_multiplier: Vec<f32>,
-    add_residual3_first_multiplier: Vec<f32>, add_residual4_first_multiplier: Vec<f32>,
-    add_residual5_first_multiplier: Vec<f32>, add_residual6_first_multiplier: Vec<f32>,
-    add_residual7_first_multiplier: Vec<f32>, add_residual8_first_multiplier: Vec<f32>,
-    
-    add_residual1_second_multiplier: Vec<f32>, add_residual2_second_multiplier: Vec<f32>,
-    add_residual3_second_multiplier: Vec<f32>, add_residual4_second_multiplier: Vec<f32>,
-    add_residual5_second_multiplier: Vec<f32>, add_residual6_second_multiplier: Vec<f32>,
-    add_residual7_second_multiplier: Vec<f32>, add_residual8_second_multiplier: Vec<f32>,
-    
-    multiplier_fc1: Vec<f32>,
+    fc_w: Vec<Vec<u8>>,
+    // Multipliers and zero points (simplified for brevity)
+    conv1_multiplier: Vec<f32>, conv2_1_multiplier: Vec<f32>, conv2_2_multiplier: Vec<f32>,
+    conv3_1_multiplier: Vec<f32>, conv3_2_multiplier: Vec<f32>,
+    conv4_1_multiplier: Vec<f32>, conv4_2_multiplier: Vec<f32>,
+    conv5_1_multiplier: Vec<f32>, conv5_2_multiplier: Vec<f32>,
+    fc_multiplier: Vec<f32>,
+    conv1_output_0: u8, conv2_1_output_0: u8, conv2_2_output_0: u8,
+    conv3_1_output_0: u8, conv3_2_output_0: u8,
+    conv4_1_output_0: u8, conv4_2_output_0: u8,
+    conv5_1_output_0: u8, conv5_2_output_0: u8,
+    fc_output_0: u8,
 ) -> Vec<Vec<u8>> {
-    
-    // Initial convolution (simulated as identity for simplicity)
-    let mut current = x;
-    
-    // Layer 2 (ResNet blocks)
-    current = resnet_basic_block(
-        &current, &conv21_w, &conv22_w, 
-        &multiplier_conv21, &multiplier_conv22,
-        conv21_output_0, conv22_output_0, add_residual1_output_0,
-        &add_residual1_first_multiplier, &add_residual1_second_multiplier, 1
-    );
-    
-    current = resnet_basic_block(
-        &current, &conv23_w, &conv24_w,
-        &multiplier_conv23, &multiplier_conv24,
-        conv23_output_0, conv24_output_0, add_residual2_output_0,
-        &add_residual2_first_multiplier, &add_residual2_second_multiplier, 1
-    );
-    
-    // Layer 3 (ResNet blocks with stride 2)
-    current = resnet_basic_block(
-        &current, &conv31_w, &conv32_w,
-        &multiplier_conv31, &multiplier_conv32,
-        conv31_output_0, conv32_output_0, add_residual3_output_0,
-        &add_residual3_first_multiplier, &add_residual3_second_multiplier, 2
-    );
-    
-    current = resnet_basic_block(
-        &current, &conv33_w, &conv34_w,
-        &multiplier_conv33, &multiplier_conv34,
-        conv33_output_0, conv34_output_0, add_residual4_output_0,
-        &add_residual4_first_multiplier, &add_residual4_second_multiplier, 1
-    );
-    
-    // Layer 4 (ResNet blocks with stride 2)
-    current = resnet_basic_block(
-        &current, &conv41_w, &conv42_w,
-        &multiplier_conv41, &multiplier_conv42,
-        conv41_output_0, conv42_output_0, add_residual5_output_0,
-        &add_residual5_first_multiplier, &add_residual5_second_multiplier, 2
-    );
-    
-    current = resnet_basic_block(
-        &current, &conv43_w, &conv44_w,
-        &multiplier_conv43, &multiplier_conv44,
-        conv43_output_0, conv44_output_0, add_residual6_output_0,
-        &add_residual6_first_multiplier, &add_residual6_second_multiplier, 1
-    );
-    
-    // Layer 5 (ResNet blocks with stride 2)
-    current = resnet_basic_block(
-        &current, &conv51_w, &conv52_w,
-        &multiplier_conv51, &multiplier_conv52,
-        conv51_output_0, conv52_output_0, add_residual7_output_0,
-        &add_residual7_first_multiplier, &add_residual7_second_multiplier, 2
-    );
-    
-    current = resnet_basic_block(
-        &current, &conv53_w, &conv54_w,
-        &multiplier_conv53, &multiplier_conv54,
-        conv53_output_0, conv54_output_0, add_residual8_output_0,
-        &add_residual8_first_multiplier, &add_residual8_second_multiplier, 1
-    );
-    
+    // Initial 7x7 conv, stride 2, padding 3
+    let mut current = conv2d_7x7_u8(&x, &conv1_w, 2, 3, conv1_output_0, &conv1_multiplier);
+    // MaxPool 3x3, stride 2
+    current = max_pool2d_u8(&current, 3, 2);
+
+    // Stage 1: 64 channels, 2 blocks
+    current = resnet_basic_block(&current, &conv2_1_w, &conv2_2_w, &conv2_1_multiplier, &conv2_2_multiplier, conv2_1_output_0, conv2_2_output_0, conv2_2_output_0, &vec![1.0; 64], &vec![1.0; 64], 1);
+    current = resnet_basic_block(&current, &conv2_1_w, &conv2_2_w, &conv2_1_multiplier, &conv2_2_multiplier, conv2_1_output_0, conv2_2_output_0, conv2_2_output_0, &vec![1.0; 64], &vec![1.0; 64], 1);
+
+    // Stage 2: 128 channels, 2 blocks (first block stride 2)
+    current = resnet_basic_block(&current, &conv3_1_w, &conv3_2_w, &conv3_1_multiplier, &conv3_2_multiplier, conv3_1_output_0, conv3_2_output_0, conv3_2_output_0, &vec![1.0; 128], &vec![1.0; 128], 2);
+    current = resnet_basic_block(&current, &conv3_1_w, &conv3_2_w, &conv3_1_multiplier, &conv3_2_multiplier, conv3_1_output_0, conv3_2_output_0, conv3_2_output_0, &vec![1.0; 128], &vec![1.0; 128], 1);
+
+    // Stage 3: 256 channels, 2 blocks (first block stride 2)
+    current = resnet_basic_block(&current, &conv4_1_w, &conv4_2_w, &conv4_1_multiplier, &conv4_2_multiplier, conv4_1_output_0, conv4_2_output_0, conv4_2_output_0, &vec![1.0; 256], &vec![1.0; 256], 2);
+    current = resnet_basic_block(&current, &conv4_1_w, &conv4_2_w, &conv4_1_multiplier, &conv4_2_multiplier, conv4_1_output_0, conv4_2_output_0, conv4_2_output_0, &vec![1.0; 256], &vec![1.0; 256], 1);
+
+    // Stage 4: 512 channels, 2 blocks (first block stride 2)
+    current = resnet_basic_block(&current, &conv5_1_w, &conv5_2_w, &conv5_1_multiplier, &conv5_2_multiplier, conv5_1_output_0, conv5_2_output_0, conv5_2_output_0, &vec![1.0; 512], &vec![1.0; 512], 2);
+    current = resnet_basic_block(&current, &conv5_1_w, &conv5_2_w, &conv5_1_multiplier, &conv5_2_multiplier, conv5_1_output_0, conv5_2_output_0, conv5_2_output_0, &vec![1.0; 512], &vec![1.0; 512], 1);
+
     // Global average pooling
     let pooled = avg_pool2d_u8(&current, current[0][0].len());
-    
-    // Fully connected layer
-    fully_connected_u8(&pooled, &fc1_w, fc1_output_0, &multiplier_fc1)
+    // FC
+    fully_connected_u8(&pooled, &fc_w, fc_output_0, &fc_multiplier)
 }
 
 fn main() {
@@ -395,127 +310,66 @@ fn main() {
     let start = Instant::now();
 
     // Generate test data
-    let x = rand_4d_vec_generator(1, 3, 32, 32);
-
-    // Layer 2 weights
-    let conv21_w = rand_4d_vec_generator(16, 3, 3, 3);
-    let conv22_w = rand_4d_vec_generator(16, 16, 3, 3);
-    let conv23_w = rand_4d_vec_generator(16, 16, 3, 3);
-    let conv24_w = rand_4d_vec_generator(16, 16, 3, 3);
-    let multiplier_conv21 = vec![1.5; 16];
-    let multiplier_conv22 = vec![1.5; 16];
-    let multiplier_conv23 = vec![1.5; 16];
-    let multiplier_conv24 = vec![1.5; 16];
-
-    // Layer 3 weights
-    let conv31_w = rand_4d_vec_generator(32, 16, 3, 3);
-    let conv32_w = rand_4d_vec_generator(32, 32, 3, 3);
-    let conv33_w = rand_4d_vec_generator(32, 32, 3, 3);
-    let conv34_w = rand_4d_vec_generator(32, 32, 3, 3);
-    let multiplier_conv31 = vec![1.5; 32];
-    let multiplier_conv32 = vec![1.5; 32];
-    let multiplier_conv33 = vec![1.5; 32];
-    let multiplier_conv34 = vec![1.5; 32];
-
-    // Layer 4 weights
-    let conv41_w = rand_4d_vec_generator(64, 32, 3, 3);
-    let conv42_w = rand_4d_vec_generator(64, 64, 3, 3);
-    let conv43_w = rand_4d_vec_generator(64, 64, 3, 3);
-    let conv44_w = rand_4d_vec_generator(64, 64, 3, 3);
-    let multiplier_conv41 = vec![1.5; 64];
-    let multiplier_conv42 = vec![1.5; 64];
-    let multiplier_conv43 = vec![1.5; 64];
-    let multiplier_conv44 = vec![1.5; 64];
-
-    // Layer 5 weights
-    let conv51_w = rand_4d_vec_generator(128, 64, 3, 3);
-    let conv52_w = rand_4d_vec_generator(128, 128, 3, 3);
-    let conv53_w = rand_4d_vec_generator(128, 128, 3, 3);
-    let conv54_w = rand_4d_vec_generator(128, 128, 3, 3);
-    let multiplier_conv51 = vec![1.5; 128];
-    let multiplier_conv52 = vec![1.5; 128];
-    let multiplier_conv53 = vec![1.5; 128];
-    let multiplier_conv54 = vec![1.5; 128];
-
-    // Residual connection weights
-    let conv_residual1_weight = rand_4d_vec_generator(16, 3, 1, 1);
-    let conv_residual3_weight = rand_4d_vec_generator(32, 16, 1, 1);
-    let conv_residual5_weight = rand_4d_vec_generator(64, 32, 1, 1);
-    let conv_residual7_weight = rand_4d_vec_generator(128, 64, 1, 1);
-
-    // FC layer
-    let fc1_w = rand_2d_vec_generator(10, 128);
-    let multiplier_fc1 = vec![1.5; 10];
-
-    // Zero points and multipliers for residual additions
-    let add_residual_outputs = vec![128u8; 8];
-    let add_residual_first_multipliers = vec![
-        vec![1.5; 16], vec![1.5; 16], vec![1.5; 32], vec![1.5; 32],
-        vec![1.5; 64], vec![1.5; 64], vec![1.5; 128], vec![1.5; 128]
-    ];
-    let add_residual_second_multipliers = add_residual_first_multipliers.clone();
-
-    println!("Finish reading parameters");
-    println!("Before forward pass");
-
-    
+    let x = rand_4d_vec_generator(1, 3, 224, 224); // Standard ImageNet size
+    // Initial conv weights
+    let conv1_w = rand_4d_vec_generator(64, 3, 7, 7);
+    // Stage 1
+    let conv2_1_w = rand_4d_vec_generator(64, 64, 3, 3);
+    let conv2_2_w = rand_4d_vec_generator(64, 64, 3, 3);
+    // Stage 2
+    let conv3_1_w = rand_4d_vec_generator(128, 64, 3, 3);
+    let conv3_2_w = rand_4d_vec_generator(128, 128, 3, 3);
+    // Stage 3
+    let conv4_1_w = rand_4d_vec_generator(256, 128, 3, 3);
+    let conv4_2_w = rand_4d_vec_generator(256, 256, 3, 3);
+    // Stage 4
+    let conv5_1_w = rand_4d_vec_generator(512, 256, 3, 3);
+    let conv5_2_w = rand_4d_vec_generator(512, 512, 3, 3);
+    // FC
+    let fc_w = rand_2d_vec_generator(1000, 512); // 1000 classes
+    // Multipliers and zero points
+    let conv1_multiplier = vec![1.0; 64];
+    let conv2_1_multiplier = vec![1.0; 64];
+    let conv2_2_multiplier = vec![1.0; 64];
+    let conv3_1_multiplier = vec![1.0; 128];
+    let conv3_2_multiplier = vec![1.0; 128];
+    let conv4_1_multiplier = vec![1.0; 256];
+    let conv4_2_multiplier = vec![1.0; 256];
+    let conv5_1_multiplier = vec![1.0; 512];
+    let conv5_2_multiplier = vec![1.0; 512];
+    let fc_multiplier = vec![1.0; 1000];
+    let conv1_output_0 = 128;
+    let conv2_1_output_0 = 128;
+    let conv2_2_output_0 = 128;
+    let conv3_1_output_0 = 128;
+    let conv3_2_output_0 = 128;
+    let conv4_1_output_0 = 128;
+    let conv4_2_output_0 = 128;
+    let conv5_1_output_0 = 128;
+    let conv5_2_output_0 = 128;
+    let fc_output_0 = 128;
+    let start = Instant::now();
     let z = resnet18_circuit_forward_u8(
-        1, // padding
-        x.clone(),
-        
-        // Layer weights
-        conv21_w, conv22_w, conv23_w, conv24_w,
-        conv31_w, conv32_w, conv33_w, conv34_w,
-        conv41_w, conv42_w, conv43_w, conv44_w,
-        conv51_w, conv52_w, conv53_w, conv54_w,
-        
-        // Residual weights
-        conv_residual1_weight, conv_residual3_weight, 
-        conv_residual5_weight, conv_residual7_weight,
-        
-        fc1_w,
-        
-        // Zero points
-        128, // x_0
-        128, 128, 128, 128, // conv2x outputs
-        128, 128, 128, 128, // conv3x outputs
-        128, 128, 128, 128, // conv4x outputs
-        128, 128, 128, 128, // conv5x outputs
-        128, 128, 128, 128, // residual outputs
-        128, // fc1 output
-        
-        // Weight zero points
-        128, 128, 128, 128, // conv2x weights
-        128, 128, 128, 128, // conv3x weights
-        128, 128, 128, 128, // conv4x weights
-        128, 128, 128, 128, // conv5x weights
-        128, 128, 128, 128, // residual weights
-        128, // fc1 weights
-        
-        // Multipliers
-        multiplier_conv21, multiplier_conv22, multiplier_conv23, multiplier_conv24,
-        multiplier_conv31, multiplier_conv32, multiplier_conv33, multiplier_conv34,
-        multiplier_conv41, multiplier_conv42, multiplier_conv43, multiplier_conv44,
-        multiplier_conv51, multiplier_conv52, multiplier_conv53, multiplier_conv54,
-        vec![1.5; 16], vec![1.5; 32], vec![1.5; 64], vec![1.5; 128], // residual multipliers
-        
-        // Residual add parameters
-        128, 128, 128, 128, 128, 128, 128, 128, // add outputs
-        add_residual_first_multipliers[0].clone(), add_residual_first_multipliers[1].clone(),
-        add_residual_first_multipliers[2].clone(), add_residual_first_multipliers[3].clone(),
-        add_residual_first_multipliers[4].clone(), add_residual_first_multipliers[5].clone(),
-        add_residual_first_multipliers[6].clone(), add_residual_first_multipliers[7].clone(),
-        add_residual_second_multipliers[0].clone(), add_residual_second_multipliers[1].clone(),
-        add_residual_second_multipliers[2].clone(), add_residual_second_multipliers[3].clone(),
-        add_residual_second_multipliers[4].clone(), add_residual_second_multipliers[5].clone(),
-        add_residual_second_multipliers[6].clone(), add_residual_second_multipliers[7].clone(),
-        
-        multiplier_fc1,
+        x,
+        conv1_w,
+        conv2_1_w, conv2_2_w,
+        conv3_1_w, conv3_2_w,
+        conv4_1_w, conv4_2_w,
+        conv5_1_w, conv5_2_w,
+        fc_w,
+        conv1_multiplier, conv2_1_multiplier, conv2_2_multiplier,
+        conv3_1_multiplier, conv3_2_multiplier,
+        conv4_1_multiplier, conv4_2_multiplier,
+        conv5_1_multiplier, conv5_2_multiplier,
+        fc_multiplier,
+        conv1_output_0, conv2_1_output_0, conv2_2_output_0,
+        conv3_1_output_0, conv3_2_output_0,
+        conv4_1_output_0, conv4_2_output_0,
+        conv5_1_output_0, conv5_2_output_0,
+        fc_output_0,
     );
-
     let duration = start.elapsed();
-    
-    println!("Time: {:?}", duration);
+    println!("Inference time: {:?}", duration);
     println!("Output shape: {} x {}", z.len(), z[0].len());
 }
 

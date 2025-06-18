@@ -1,6 +1,4 @@
 RESNET18 testing - using null parameters and input just to benchmark performance
-Finish reading parameters
-Before forward pass
 ResNet basic block completed with stride 1
 ResNet basic block completed with stride 1
 ResNet basic block completed with stride 2
@@ -9,5 +7,5 @@ ResNet basic block completed with stride 2
 ResNet basic block completed with stride 1
 ResNet basic block completed with stride 2
 ResNet basic block completed with stride 1
-Time: 20.182872ms
-Output shape: 1 x 10
+Inference time: 263.815824ms
+Output shape: 1 x 1000
