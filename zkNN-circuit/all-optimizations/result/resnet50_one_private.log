@@ -1,0 +1,212 @@
+RESNET18 testing. use null parameters and input just to benchmark performance
+finish reading parameters
+Begin forwarding.
+finish forwarding
+finish pedersen
+commit time 19.48571ms
+start generating random parameters
+Number of constraints for x commitment 125682
+input.shape: 1 3 32 32
+conv_weights.shape: 64 3 1 1
+multiplier.shape: 64
+after residual_conv
+input.shape: 1 3 32 32
+conv_weights.shape: 16 3 1 1
+multiplier.shape: 16
+input.shape: 1 16 34 34
+conv_weights.shape: 16 16 3 3
+multiplier.shape: 16
+input.shape: 1 16 34 34
+conv_weights.shape: 64 16 1 1
+multiplier.shape: 64
+after third_conv
+input.shape: 1 64 32 32
+conv_weights.shape: 16 64 1 1
+multiplier.shape: 16
+input.shape: 1 16 34 34
+conv_weights.shape: 16 16 3 3
+multiplier.shape: 16
+input.shape: 1 16 34 34
+conv_weights.shape: 64 16 1 1
+multiplier.shape: 64
+after sixth_conv
+input.shape: 1 64 32 32
+conv_weights.shape: 16 64 1 1
+multiplier.shape: 16
+input.shape: 1 16 34 34
+conv_weights.shape: 16 16 3 3
+multiplier.shape: 16
+input.shape: 1 16 34 34
+conv_weights.shape: 64 16 1 1
+multiplier.shape: 64
+after 9th_conv
+Number of constraints for conv21 ~ conv29 83648 accumulated constraints 209330
+Number of constraints for AvgPool2 2048 accumulated constraints 211378
+input.shape: 1 64 16 16
+conv_weights.shape: 128 64 1 1
+multiplier.shape: 128
+after residual_conv
+input.shape: 1 64 16 16
+conv_weights.shape: 32 64 1 1
+multiplier.shape: 32
+input.shape: 1 32 18 18
+conv_weights.shape: 32 32 3 3
+multiplier.shape: 32
+input.shape: 1 32 18 18
+conv_weights.shape: 128 32 1 1
+multiplier.shape: 128
+after third_conv
+input.shape: 1 128 16 16
+conv_weights.shape: 32 128 1 1
+multiplier.shape: 32
+input.shape: 1 32 18 18
+conv_weights.shape: 32 32 3 3
+multiplier.shape: 32
+input.shape: 1 32 18 18
+conv_weights.shape: 128 32 1 1
+multiplier.shape: 128
+after sixth_conv
+input.shape: 1 128 16 16
+conv_weights.shape: 32 128 1 1
+multiplier.shape: 32
+input.shape: 1 32 18 18
+conv_weights.shape: 32 32 3 3
+multiplier.shape: 32
+input.shape: 1 32 18 18
+conv_weights.shape: 128 32 1 1
+multiplier.shape: 128
+after 9th_conv
+input.shape: 1 128 16 16
+conv_weights.shape: 32 128 1 1
+multiplier.shape: 32
+input.shape: 1 32 18 18
+conv_weights.shape: 32 32 3 3
+multiplier.shape: 32
+input.shape: 1 32 18 18
+conv_weights.shape: 128 32 1 1
+multiplier.shape: 128
+Number of constraints for conv31 ~ conv3_12 65024 accumulated constraints 276402
+Number of constraints for AvgPool3 1024 accumulated constraints 277426
+input.shape: 1 128 8 8
+conv_weights.shape: 256 128 1 1
+multiplier.shape: 256
+after residual_conv
+input.shape: 1 128 8 8
+conv_weights.shape: 64 128 1 1
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 64 64 3 3
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 256 64 1 1
+multiplier.shape: 256
+after third_conv
+input.shape: 1 256 8 8
+conv_weights.shape: 64 256 1 1
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 64 64 3 3
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 256 64 1 1
+multiplier.shape: 256
+after sixth_conv
+input.shape: 1 256 8 8
+conv_weights.shape: 64 256 1 1
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 64 64 3 3
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 256 64 1 1
+multiplier.shape: 256
+after 9th_conv
+input.shape: 1 256 8 8
+conv_weights.shape: 256 256 1 1
+multiplier.shape: 256
+after residual_conv
+input.shape: 1 256 8 8
+conv_weights.shape: 64 256 1 1
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 64 64 3 3
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 256 64 1 1
+multiplier.shape: 256
+after third_conv
+input.shape: 1 256 8 8
+conv_weights.shape: 64 256 1 1
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 64 64 3 3
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 256 64 1 1
+multiplier.shape: 256
+after sixth_conv
+input.shape: 1 256 8 8
+conv_weights.shape: 64 256 1 1
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 64 64 3 3
+multiplier.shape: 64
+input.shape: 1 64 10 10
+conv_weights.shape: 256 64 1 1
+multiplier.shape: 256
+after 9th_conv
+Number of constraints for conv41 ~ conv4_18 68608 accumulated constraints 346034
+Number of constraints for AvgPool4 1024 accumulated constraints 347058
+input.shape: 1 256 4 4
+conv_weights.shape: 512 256 1 1
+multiplier.shape: 512
+after residual_conv
+input.shape: 1 256 4 4
+conv_weights.shape: 128 256 1 1
+multiplier.shape: 128
+input.shape: 1 128 6 6
+conv_weights.shape: 128 128 3 3
+multiplier.shape: 128
+input.shape: 1 128 6 6
+conv_weights.shape: 512 128 1 1
+multiplier.shape: 512
+after third_conv
+input.shape: 1 512 4 4
+conv_weights.shape: 128 512 3 3
+multiplier.shape: 128
+input.shape: 1 128 4 4
+conv_weights.shape: 128 128 1 1
+multiplier.shape: 128
+input.shape: 1 128 6 6
+conv_weights.shape: 512 128 3 3
+multiplier.shape: 512
+after sixth_conv
+input.shape: 1 512 4 4
+conv_weights.shape: 128 512 1 1
+multiplier.shape: 128
+input.shape: 1 128 6 6
+conv_weights.shape: 128 128 3 3
+multiplier.shape: 128
+input.shape: 1 128 6 6
+conv_weights.shape: 512 128 1 1
+multiplier.shape: 512
+after 9th_conv
+Number of constraints for conv51 ~ conv59 23808 accumulated constraints 370866
+Number of constraints for AvgPool5 512 accumulated constraints 371378
+Number of constraints FC1 2 accumulated constraints 371380
+Number of constraints for z commitment 39946 accumulated constraints 411326
+generate_time:384.819122138s
+start inline lcs
+lc_map len:323169984
+prepare_time:257.046435ms
+thread:2 finished, inner_prepare_time:1.952795975s,compute_time:12.386454184s,push_time:70ns
+thread:0 finished, inner_prepare_time:1.960968553s,compute_time:12.387854749s,push_time:70ns
+thread:4 finished, inner_prepare_time:1.959209219s,compute_time:12.43801391s,push_time:70ns
+thread:7 finished, inner_prepare_time:1.963339236s,compute_time:12.439123263s,push_time:70ns
+thread:6 finished, inner_prepare_time:1.97980925s,compute_time:12.422959089s,push_time:70ns
+thread:5 finished, inner_prepare_time:1.964701488s,compute_time:12.558071083s,push_time:70ns
+thread:3 finished, inner_prepare_time:1.965407376s,compute_time:12.650178956s,push_time:50ns
+thread:1 finished, inner_prepare_time:1.968576893s,compute_time:12.81569897s,push_time:60ns
+prepare time:257.046435ms, parallel compute:14.801602641s, insert time:30ns, map_len323169984
+total_time:15.05868292s
+allocate a,b and c

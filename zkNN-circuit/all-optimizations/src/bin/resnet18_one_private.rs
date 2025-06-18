@@ -526,9 +526,9 @@ fn main() {
 
     println!("setup time {:?}", end.duration_since(begin));
 
-    let mut buf = vec![];
-    param.serialize(&mut buf).unwrap();
-    println!("crs size: {}", buf.len());
+    // let mut buf = vec![];
+    // param.serialize(&mut buf).unwrap();
+    // println!("crs size: {}", buf.len());
 
     let pvk = prepare_verifying_key(&param.vk);
     println!("random parameters generated!\n");

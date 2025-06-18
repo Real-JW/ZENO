@@ -4,7 +4,7 @@ before forward
 resnet18 vallina forward
 finish forwarding
 finish pedersen
-commit time 19.75693ms
+commit time 19.689887ms
 start generating random parameters
 Number of constraints for x commitment 125682
 Number of constraints for res_block1 8192 accumulated constraints 133874
@@ -21,24 +21,23 @@ Number of constraints for res_block8 1536 accumulated constraints 155378
 Number of constraints for AvgPool5 128 accumulated constraints 155506
 Number of constraints FC1 2 accumulated constraints 155508
 Number of constraints for z commitment 39946 accumulated constraints 195454
-generate_time:45.560797929s
+generate_time:45.496650376s
 start inline lcs
 lc_map len:69903744
-prepare_time:56.078179ms
-thread:5 finished, inner_prepare_time:404.293582ms,compute_time:2.530720788s,push_time:70ns
-thread:0 finished, inner_prepare_time:412.711129ms,compute_time:2.53001499s,push_time:70ns
-thread:1 finished, inner_prepare_time:418.306166ms,compute_time:2.525592055s,push_time:60ns
-thread:4 finished, inner_prepare_time:419.334856ms,compute_time:2.528397995s,push_time:60ns
-thread:7 finished, inner_prepare_time:416.113059ms,compute_time:2.531648747s,push_time:70ns
-thread:2 finished, inner_prepare_time:418.729308ms,compute_time:2.612201704s,push_time:60ns
-thread:6 finished, inner_prepare_time:420.256734ms,compute_time:2.644957871s,push_time:70ns
-thread:3 finished, inner_prepare_time:406.540542ms,compute_time:2.705993387s,push_time:60ns
-prepare time:56.078179ms, parallel compute:3.120336531s, insert time:20ns, map_len69903744
-total_time:3.176444166s
+prepare_time:61.410612ms
+thread:3 finished, inner_prepare_time:414.98781ms,compute_time:2.58034871s,push_time:80ns
+thread:5 finished, inner_prepare_time:407.199809ms,compute_time:2.596119461s,push_time:80ns
+thread:6 finished, inner_prepare_time:418.556033ms,compute_time:2.606135644s,push_time:81ns
+thread:1 finished, inner_prepare_time:406.377832ms,compute_time:2.621930139s,push_time:81ns
+thread:7 finished, inner_prepare_time:406.138648ms,compute_time:2.639405862s,push_time:80ns
+thread:4 finished, inner_prepare_time:414.066193ms,compute_time:2.642502772s,push_time:80ns
+thread:2 finished, inner_prepare_time:402.84739ms,compute_time:2.727761012s,push_time:81ns
+thread:0 finished, inner_prepare_time:407.341288ms,compute_time:2.735860884s,push_time:80ns
+prepare time:61.410612ms, parallel compute:3.150413229s, insert time:20ns, map_len69903744
+total_time:3.211857144s
 allocate a,b and c
-Setup: total time:76.14655476s,generate time:45.560797929s,circuit computation time:3.176490073s,security computation time:27.409233776s
-setup time 94.250315913s
-crs size: 16220443584
+Setup: total time:76.148947295s,generate time:45.496650376s,circuit computation time:3.211912289s,security computation time:27.440348622s
+setup time 92.002616709s
 random parameters generated!
 
 Number of constraints for x commitment 125682
@@ -57,17 +56,18 @@ Number of constraints for AvgPool5 128 accumulated constraints 155506
 Number of constraints FC1 2 accumulated constraints 155508
 Number of constraints for z commitment 39946 accumulated constraints 195454
 lc_map len:69903744
-prepare_time:57.367253ms
-thread:4 finished, inner_prepare_time:438.688586ms,compute_time:2.138385696s,push_time:70ns
-thread:3 finished, inner_prepare_time:437.677139ms,compute_time:2.18790988s,push_time:70ns
-thread:0 finished, inner_prepare_time:440.941968ms,compute_time:2.192259005s,push_time:70ns
-thread:6 finished, inner_prepare_time:432.664086ms,compute_time:2.205741664s,push_time:80ns
-thread:2 finished, inner_prepare_time:444.02368ms,compute_time:2.202987864s,push_time:81ns
-thread:5 finished, inner_prepare_time:426.649694ms,compute_time:2.24915815s,push_time:81ns
-thread:1 finished, inner_prepare_time:432.633578ms,compute_time:2.269228528s,push_time:81ns
-thread:7 finished, inner_prepare_time:447.776965ms,compute_time:2.295621693s,push_time:71ns
-prepare time:57.367253ms, parallel compute:2.749656462s, insert time:30ns, map_len69903744
-total_time:2.80705856s
+prepare_time:62.73372ms
+thread:7 finished, inner_prepare_time:412.849547ms,compute_time:2.188191651s,push_time:71ns
+thread:5 finished, inner_prepare_time:411.587315ms,compute_time:2.211763657s,push_time:61ns
+thread:6 finished, inner_prepare_time:413.652259ms,compute_time:2.239086492s,push_time:81ns
+thread:0 finished, inner_prepare_time:411.419697ms,compute_time:2.269825834s,push_time:60ns
+thread:1 finished, inner_prepare_time:414.939909ms,compute_time:2.276127066s,push_time:60ns
+thread:3 finished, inner_prepare_time:412.892038ms,compute_time:2.298040018s,push_time:70ns
+thread:2 finished, inner_prepare_time:426.02047ms,compute_time:2.320494577s,push_time:60ns
+thread:4 finished, inner_prepare_time:418.494035ms,compute_time:2.501323483s,push_time:70ns
+prepare time:62.73372ms, parallel compute:2.925190412s, insert time:20ns, map_len69903744
+total_time:2.987957014s
 start generate witness_map
-Prove: total time:62.501621923s,generate time:44.079963438s,circuit computation time:2.807112523s,security computation time:15.614538729s
-prove time 68.874543599s
+Prove: total time:63.679859393s,generate time:44.878756398s,circuit computation time:2.98800189s,security computation time:15.813095896s
+prove time 70.00485585s
+verification time 2.872514ms

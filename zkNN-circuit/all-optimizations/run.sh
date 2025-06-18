@@ -8,5 +8,6 @@ rustup override set 1.43.0
 # CARGO_NET_GIT_FETCH_WITH_CLI=true cargo run --bin vgg_both_private --release > result/vgg_both_private.log
 
 # CARGO_NET_GIT_FETCH_WITH_CLI=true cargo run --bin baseline_lenet_small --release > result/baseline_lenet_small.log
-CARGO_NET_GIT_FETCH_WITH_CLI=true cargo run --bin baseline_lenet_large --release > result/baseline_lenet_large.log
+# CARGO_NET_GIT_FETCH_WITH_CLI=true cargo run --bin baseline_lenet_large --release > result/baseline_lenet_large.log
 # CARGO_NET_GIT_FETCH_WITH_CLI=true cargo run --bin baseline_vgg16 --release > result/baseline_vgg16.log
+CARGO_NET_GIT_FETCH_WITH_CLI=true cargo run --bin baseline_resnet18 --release > result/baseline_resnet18.log
