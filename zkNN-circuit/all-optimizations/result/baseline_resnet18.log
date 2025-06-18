@@ -1,0 +1,13 @@
+RESNET18 testing - using null parameters and input just to benchmark performance
+Finish reading parameters
+Before forward pass
+ResNet basic block completed with stride 1
+ResNet basic block completed with stride 1
+ResNet basic block completed with stride 2
+ResNet basic block completed with stride 1
+ResNet basic block completed with stride 2
+ResNet basic block completed with stride 1
+ResNet basic block completed with stride 2
+ResNet basic block completed with stride 1
+Time: 254.394342ms
+Output shape: 1 x 10

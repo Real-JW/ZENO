@@ -9,6 +9,7 @@ if [ -e /sys/devices/system/cpu/cpu3/online ]; then echo 0 | sudo tee /sys/devic
 
 # Pin all processes to core0
 rustup override set 1.43.0
-taskset -c 0 cargo run --bin baseline_lenet_small --release > result/baseline_lenet_small.log
-taskset -c 0 cargo run --bin baseline_lenet_large --release > result/baseline_lenet_large.log
-taskset -c 0 cargo run --bin baseline_vgg16 --release > result/baseline_vgg16.log
+# taskset -c 0 cargo run --bin baseline_lenet_small --release > result/baseline_lenet_small.log
+# taskset -c 0 cargo run --bin baseline_lenet_large --release > result/baseline_lenet_large.log
+# taskset -c 0 cargo run --bin baseline_vgg16 --release > result/baseline_vgg16.log
+taskset -c 0 cargo run --bin baseline_resnet18 --release > result/baseline_resnet18.log
